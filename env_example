@@ -1,0 +1,6 @@
+MONGO_DB_URI_DEV="mongodb://localhost:27017/backend-coder"
+MONGO_DB_URI="mongodb://localhost:27017/backend-coder"
+JWT_SECRET="coderbackendentrega3final-secret-key"
+TOKEN_EXPIRES_IN="30d"
+WHITELISTED_DOMAINS= http://localhost:3000,http://localhost:8080
+SKIP_PREFLIGHT_CHECK=true
