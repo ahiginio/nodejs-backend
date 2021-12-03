@@ -17,6 +17,10 @@ const Schema = new mongoose.Schema(
       type: Number,
       required: [true, "Precio es requerido"],
     },
+    stock: {
+      type: Number,
+      required: [true, "Stock es requerido"],
+    },
     photo: {
       type: String,
     },

@@ -1,1 +1,7 @@
 {"level":"http","message":"::1 - - [02/Dec/2021:01:02:37 +0000] \"POST /user/register HTTP/1.1\" 400 59 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:49:43 +0000] \"POST /product HTTP/1.1\" 400 135 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:51:49 +0000] \"POST /product HTTP/1.1\" 400 983 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:51:51 +0000] \"POST /product HTTP/1.1\" 400 983 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:52:30 +0000] \"POST /product HTTP/1.1\" 400 983 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:55:38 +0000] \"GET /products/61a969b60470f16e66abc6b5 HTTP/1.1\" 404 172 \"-\" \"PostmanRuntime/7.28.4\"\n"}
+{"level":"http","message":"::1 - - [03/Dec/2021:00:58:54 +0000] \"POST /user/login HTTP/1.1\" 400 61 \"-\" \"PostmanRuntime/7.28.4\"\n"}
