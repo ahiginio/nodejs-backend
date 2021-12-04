@@ -1,14 +1,16 @@
 import express from "express";
 import * as cartController from "../controllers/cart.controller.js";
+import auth from '../middlewares/auth.middleware.js'
 const router = express.Router();
 
-router.post("/cart", cartController.createCart);
-router.put("/cart/:id/productos", cartController.agregarProductosCart);
-router.delete("/cart/:id", cartController.deleteCart);
+router.post("/cart", auth, cartController.createCart);
+router.put("/cart/:id/productos", auth, cartController.agregarProductosCart);
+router.delete("/cart/:id", auth, cartController.deleteCart);
 router.delete(
   "/cart/:id/productos/:id_prod",
+  auth,
   cartController.deleteProductosCart
 );
-router.get("/cart/:id/productos", cartController.listarProductosCartById);
+router.get("/cart/:id/productos", auth, cartController.listarProductosCartById);
 
 export default router;

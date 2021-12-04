@@ -7,14 +7,16 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import cors from 'cors'
 import path from 'path'
-import UserRouter from './routes/user.route.js'
-import CartRouter from './routes/cart.route.js'
-import ProductRouter from './routes/product.route.js'
 import cluster from 'cluster'
 import os from 'os'
 import logger from "./utils/logger.js";
 dotenv.config()
+import UserRouter from "./routes/user.route.js";
+import CartRouter from "./routes/cart.route.js";
+import ProductRouter from "./routes/product.route.js";
+import CheckoutRouter from "./routes/checkout.route.js";
 import "./utils/db.js"
+import auth from "./middlewares/auth.middleware.js";
 
 const nCpus = os.cpus().length
 if (cluster.isMaster) {
@@ -60,6 +62,7 @@ if (cluster.isMaster) {
   app.use(UserRouter);
   app.use(ProductRouter);
   app.use(CartRouter);
+  app.use(CheckoutRouter);
   // Inicio el servidor
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {

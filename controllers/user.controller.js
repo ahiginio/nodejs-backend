@@ -1,19 +1,11 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { createTransport } from "nodemailer";
+import transporter from "../utils/mailTransport.js";
 import User from "../models/user.model.js";
 import auth from "../middlewares/auth.middleware.js";
 import logger from "../utils/logger.js"
 const router = express.Router();
-const transporter = createTransport({
-  service: "gmail",
-  port: 587,
-  auth: {
-    user: "agustin@creativedog.agency",
-    pass: "adelos94",
-  },
-});
 
 export async function signUp(req, res) {
   try {

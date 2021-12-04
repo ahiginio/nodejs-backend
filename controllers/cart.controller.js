@@ -54,7 +54,7 @@ export async function agregarProductosCart(req, res) {
       stock: body.stock,
       timestamp: date.toLocaleString("es-AR"),
     };
-    carrito.productos.push(Producto);
+    carrito.products.push(Producto);
     carrito
       .save()
       .then(() => {
@@ -98,10 +98,10 @@ export async function deleteProductosCart(req, res) {
   await Cart.findById(req.params.id)
     .then((res) => {
       const carrito = res;
-      const carritoUpdate = carrito.productos.filter(
-        (productos) => productos._id != req.params.id_prod
+      const carritoUpdate = carrito.products.filter(
+        (products) => products._id != req.params.id_prod
       );
-      Cart.findByIdAndUpdate(req.params.id, { productos: carritoUpdate });
+      Cart.findByIdAndUpdate(req.params.id, { products: carritoUpdate });
       return res
         .status(200)
         .json({ success: true, message: "Cart actualizado con exito" });
