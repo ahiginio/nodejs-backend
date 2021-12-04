@@ -37,7 +37,7 @@ export async function listarProducts (req, res) {
           .status(404)
           .json({ success: false, error: "No se encontraron productos" });
       }
-      return res.status(200).json({ success: true, data: productos });
+      return res.status(200).json(productos);
     })
     .catch((err) => {
       return res.status(400).json({ success: false, error: err });
@@ -52,7 +52,7 @@ export async function listarProductById (req, res) {
           error: "Debe ingresar un producto para poder filtrar",
         });
       }
-      return res.status(200).json({ success: true, data: producto });
+      return res.status(200).json(producto);
     })
     .catch((err) => {
       return res.json({

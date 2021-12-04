@@ -10,6 +10,10 @@ import path from 'path'
 import cluster from 'cluster'
 import os from 'os'
 import logger from "./utils/logger.js";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 dotenv.config()
 import UserRouter from "./routes/user.route.js";
 import CartRouter from "./routes/cart.route.js";
@@ -58,11 +62,16 @@ if (cluster.isMaster) {
     },
   });
   app.use(morganMiddleware);
+
   /* --------------------------------- Routing -------------------------------- */
-  app.use(UserRouter);
-  app.use(ProductRouter);
-  app.use(CartRouter);
-  app.use(CheckoutRouter);
+  app.use('/api/',UserRouter);
+  app.use("/api/", ProductRouter);
+  app.use("/api/", CartRouter);
+  app.use("/api/", CheckoutRouter);
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
   // Inicio el servidor
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {
