@@ -122,7 +122,8 @@ export async function signIn(req, res) {
       token,
       user: {
         id: user._id,
-        displayName: user.displayName,
+        name: user.firstName,
+        apellido: user.lastName,
         email: user.email,
         role: user.role,
         funds: user.funds,
