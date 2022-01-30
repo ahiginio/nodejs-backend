@@ -32,7 +32,7 @@ export async function listarProductosCartById(req, res) {
         .json({ success: false, error: "Debe ingresar un id de carrito" });
     }
     console.log(carrito);
-    return res.status(200).json({ success: true, data: carrito });
+    return res.status(200).json(carrito);
   });
 }
 export async function agregarProductosCart(req, res) {
