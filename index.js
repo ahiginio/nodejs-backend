@@ -18,6 +18,7 @@ dotenv.config()
 import UserRouter from "./routes/user.route.js";
 import CartRouter from "./routes/cart.route.js";
 import ProductRouter from "./routes/product.route.js";
+import CategoryRouter from "./routes/category.route.js";
 import CheckoutRouter from "./routes/checkout.route.js";
 import "./utils/db.js"
 import auth from "./middlewares/auth.middleware.js";
@@ -66,6 +67,7 @@ if (cluster.isMaster) {
   /* --------------------------------- Routing -------------------------------- */
   app.use('/api/',UserRouter);
   app.use("/api/", ProductRouter);
+  app.use("/api/", CategoryRouter);
   app.use("/api/", CartRouter);
   app.use("/api/", CheckoutRouter);
   app.use(express.static(path.join(__dirname, "client", "build")));

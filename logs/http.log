@@ -61,3 +61,18 @@
 {"level":"http","message":"::1 - - [30/Jan/2022:14:32:39 +0000] \"GET /api/cart/61f6a17a5053786cbafcd69f/productos HTTP/1.1\" 500 65 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36\"\n"}
 {"level":"http","message":"::1 - - [30/Jan/2022:14:34:02 +0000] \"PUT /api/cart//productos HTTP/1.1\" 404 158 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36\"\n"}
 {"level":"http","message":"::1 - - [30/Jan/2022:14:34:05 +0000] \"PUT /api/cart//productos HTTP/1.1\" 404 158 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:15:58:12 +0000] \"POST /api/category HTTP/1.1\" 500 65 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:02:55 +0000] \"POST /product HTTP/1.1\" 404 147 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:03:08 +0000] \"POST /product HTTP/1.1\" 404 147 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:09:15 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:10:16 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:10:25 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:11:20 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:12:02 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:13:25 +0000] \"GET /api/products HTTP/1.1\" 400 28 \"http://localhost:3000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:16:26 +0000] \"POST /api/product HTTP/1.1\" 400 134 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:26:35 +0000] \"GET /api/product/category/61fff059e9b969636490d036 HTTP/1.1\" 404 72 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:26:49 +0000] \"GET /api/product/category/61fff059e9b969636490d036 HTTP/1.1\" 404 72 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:26:50 +0000] \"GET /api/product/category/61fff059e9b969636490d036 HTTP/1.1\" 404 72 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:27:35 +0000] \"GET /api/products/category/61fff059e9b969636490d036 HTTP/1.1\" 404 72 \"-\" \"PostmanRuntime/7.29.0\"\n"}
+{"level":"http","message":"::1 - - [06/Feb/2022:16:27:39 +0000] \"GET /api/products/category/61fff059e9b969636490d036 HTTP/1.1\" 404 72 \"-\" \"PostmanRuntime/7.29.0\"\n"}

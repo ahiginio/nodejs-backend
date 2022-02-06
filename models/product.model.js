@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
 import mongoose from "mongoose";
 import validator from "validator";
-
-const Schema = new mongoose.Schema(
+const { Schema } = mongoose;
+const schema = new Schema(
   {
     sku: {
       type: String,
       required: [true, "SKU es requerido"],
       unique: true,
     },
+    category: { type: Schema.ObjectId, ref: "category" },
     title: {
       type: String,
       required: [true, "Titulo es requerido"],
@@ -33,5 +34,5 @@ const Schema = new mongoose.Schema(
   }
 );
 
-const Product = mongoose.model("Product", Schema);
+const Product = mongoose.model("Product", schema);
 export default Product

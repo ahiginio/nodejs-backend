@@ -1,4 +1,5 @@
 import Product from '../models/product.model.js'
+import Category from '../models/category.model.js'
 const date = new Date()
 
 export function createProduct(req, res) {
@@ -31,6 +32,7 @@ export function createProduct(req, res) {
 }
 export async function listarProducts (req, res) {
   await Product.find({})
+    .populate({ path: "category", model: "Category" })
     .then((productos) => {
       if (!productos.length) {
         return res
@@ -40,13 +42,35 @@ export async function listarProducts (req, res) {
       return res.status(200).json(productos);
     })
     .catch((err) => {
+      console.log(err)
       return res.status(400).json({ success: false, error: err });
     });
 }
 export async function listarProductById (req, res) {
   await Product.findOne({ _id: req.params.id })
+    .populate({ path: "category", model: "Category" })
     .then((producto) => {
       if (!req.params.id) {
+        return res.status(404).json({
+          success: false,
+          error: "Debe ingresar un producto para poder filtrar",
+        });
+      }
+      return res.status(200).json(producto);
+    })
+    .catch((err) => {
+      return res.json({
+        success: false,
+        error: "-2",
+        descripcion: `No se encontró el producto con ID ${req.params.id}`,
+      });
+    });
+}
+export async function listarProductByCategoryId(req, res) {
+  await Product.find({ category: req.params.catId })
+    .populate({ path: "category", model: "Category" })
+    .then((producto) => {
+      if (!req.params.catId) {
         return res.status(404).json({
           success: false,
           error: "Debe ingresar un producto para poder filtrar",
