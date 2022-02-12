@@ -3,7 +3,7 @@ import * as cartController from "../controllers/cart.controller.js";
 import auth from '../middlewares/auth.middleware.js'
 const router = express.Router();
 
-router.post("/cart", auth, cartController.createCart);
+router.post("/cart/:user", auth, cartController.createCart);
 router.put("/cart/:id/productos", auth, cartController.agregarProductosCart);
 router.delete("/cart/:id", auth, cartController.deleteCart);
 router.delete(

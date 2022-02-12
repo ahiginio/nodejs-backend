@@ -166,15 +166,13 @@ export async function deleteUser(req, res) {
 
 export async function tokenIsValid(req, res) {
   try {
-    const token = req.header("x-auth-token");
+    const token = req.header("Authorization");
     if (!token) return res.json(false);
-
     const verified = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(verified)
     if (!verified) return res.json(false);
-
     const user = await User.findById(verified.id);
     if (!user) return res.json(false);
-
     return res.json(true);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -200,11 +198,15 @@ export async function getUserById(req, res) {
   await User.findById(req.params.id)
     .then((user) => {
       res.json({
-        displayName: user.displayName,
-        id: user._id,
-        funds: user.funds,
-        role: user.role,
         email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        age: user.age,
+        phone: user.phone,
+        avatar: user.avatar,
+        id: user._id,
+        role: user.role,
       });
     })
     .catch((err) => {
