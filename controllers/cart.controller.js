@@ -171,3 +171,30 @@ export async function deleteProductosCart(req, res) {
         .json({ error: error, message: "Cart no encontrado" });
     }); 
 }
+export async function clearCart(req, res) {
+  await Cart.findById({ _id: req.params.id })
+    .then((carrito) => {
+      const carritoUpdate = []
+      Cart.findByIdAndUpdate(
+        { _id: req.params.id },
+        { products: carritoUpdate }
+      )
+        .then(() => {
+          return res
+            .status(200)
+            .json({ success: true, message: "Carrito vaciado con exito" });
+        })
+        .catch(() => {
+          return res
+            .status(402)
+            .json({ error: true, message: "El carrito no pudo ser vaciado" });
+        }); 
+      
+    })
+    .catch((error) => {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ error: error, message: "Cart no encontrado" });
+    }); 
+}

@@ -11,6 +11,7 @@ router.delete(
   auth,
   cartController.deleteProductosCart
 );
+router.delete("/cart/:id/clear", auth, cartController.clearCart);
 router.get("/cart/:id/productos", auth, cartController.listarProductosCartById);
 
 export default router;

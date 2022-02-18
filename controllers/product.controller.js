@@ -137,13 +137,6 @@ export async function deleteProduct (req, res) {
           error: "Debes ingresar un producto a crear",
         });
       }
-      if (!body.role) {
-        return res.json({
-          success: false,
-          error: "-1",
-          descripcion: "Ruta /borrar, método DELETE no autorizado",
-        });
-      }
       return res.json({
         success: true,
         message: `Se borro el producto con ID ${req.params.id}`,

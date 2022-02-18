@@ -23,7 +23,9 @@ import CartRouter from "./routes/cart.route.js";
 import ProductRouter from "./routes/product.route.js";
 import CategoryRouter from "./routes/category.route.js";
 import CheckoutRouter from "./routes/checkout.route.js";
+import OrderRouter from "./routes/order.route.js";
 import MensajesRouter from "./routes/mensajes.route.js";
+import ConfigurationRouter from "./routes/configuration.route.js";
 import "./utils/db.js"
 import logger from "./utils/logger.js";
 import auth from "./middlewares/auth.middleware.js";
@@ -76,7 +78,9 @@ if (cluster.isMaster) {
   app.use("/api/", CategoryRouter);
   app.use("/api/", CartRouter);
   app.use("/api/", CheckoutRouter);
+  app.use("/api/", OrderRouter);
   app.use("/api/", MensajesRouter);
+  app.use("/api/", ConfigurationRouter);
 /*   app.use(express.static(path.join(__dirname, "client", "build")));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
@@ -110,13 +114,6 @@ if (cluster.isMaster) {
       console.log("Client disconnected");
      });
   }); 
- /* io.on("connection", (socket) => {
-   console.log(`connect ${socket.id}`);
-
-   socket.on("disconnect", (reason) => {
-     console.log(`disconnect ${socket.id} due to ${reason}`);
-   });
- }); */
   app.listen(PORT, () => {
     console.log(`${emoji.get("computer")}Server is running on port ${PORT}.`);
   });
