@@ -5,6 +5,19 @@ npm i
 cd client && npm i 
 
 ```
+## Variables de entorno
+Debera crear un .env en el root del servidor con las siguientes variables de entorno
+```
+MONGO_DB_URI_DEV
+MONGO_DB_URI
+JWT_SECRET
+TOKEN_EXPIRES_IN=
+WHITELISTED_DOMAINS
+SKIP_PREFLIGHT_CHECK=true
+API_URL= http://localhost:8080/api/
+PORT=8080
+ADMIN_EMAIL:
+```
 
 ## Endpoints
 A continuacion la lista de endpoints con sus respectivas maneras de enviar la data, 
