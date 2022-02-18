@@ -6,7 +6,7 @@ export default function Configuration () {
   const {authState} = useContext(AuthContext)
   const [configuraciones, setConfiguraciones ] = useState()
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/configuration`,{
+    axios.get(`${process.env.API_URL}/configuration`,{
     
           headers: {
             Authorization: `Bearer ${authState.token}`,

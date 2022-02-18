@@ -7,7 +7,7 @@ export default function Sidebar() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/categories`, {
+      .get(`${process.env.API_URL}/categories`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },

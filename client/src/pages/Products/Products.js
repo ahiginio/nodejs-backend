@@ -10,7 +10,7 @@ export default function Products() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/products`,{
+      .get(`${process.env.API_URL}/products`,{
         headers: {
           "Authorization": `Bearer ${authState.token}`
         }

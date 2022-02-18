@@ -13,7 +13,7 @@ export default function Products() {
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/product/${productId}`,{
+      .get(`${process.env.API_URL}/product/${productId}`,{
         headers: {
           "Authorization": `Bearer ${authState.token}`
         }
@@ -30,7 +30,7 @@ export default function Products() {
  const addToCart = (product) => {
    axios
      .put(
-       `http://localhost:8080/api/cart/${cart}/productos`,
+       `${process.env.API_URL}/cart/${cart}/productos`,
        {
          product_id: product._id,
          qty: 1,

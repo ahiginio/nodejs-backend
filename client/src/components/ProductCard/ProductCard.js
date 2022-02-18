@@ -10,7 +10,7 @@ export default function ProductCard({product}) {
   console.log(authState)
   const addToCart = (product) => {
     axios
-      .put(`http://localhost:8080/api/cart/${cart}/productos`, {
+      .put(`${process.env.API_URL}/cart/${cart}/productos`, {
         product_id: product._id,
         qty: 1,
       }, {

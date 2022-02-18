@@ -11,7 +11,7 @@ export default function Category() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/products/category/${catId}`, {
+      .get(`${process.env.API_URL}/products/category/${catId}`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
