@@ -1,3 +1,11 @@
+## Inicializacion de proyecto
+Debera correr el comando de install de npm en el root del proyecto y tambien en la carpeta client para poder levantar el frontend
+```
+npm i  
+cd client && npm i 
+
+```
+
 ## Endpoints
 A continuacion la lista de endpoints con sus respectivas maneras de enviar la data, 
 en todos debe enviar el token de auth BEARER menos en el register o login
@@ -68,6 +76,34 @@ Listar producto por ID
 Listar productos por categorias
 - Method: GET 
 - endpoint: api/products/category/:catID
+
+### Create Order
+Crea una orden de compra
+- Method: POST
+- endpoint: api/order
+```
+  items: [
+    {
+      "title": "Monitor LG 20 20MK400H-B VGA HDMI",
+      "price": 23900,
+      "qty": 1,
+      "description": "Descripcion del producto"
+    },
+    {
+      "title": "Monitor Samsung 24'' Curvo F390",
+      "price": 27900,
+      "qty": 1,
+      "description": "Descripcion del producto"
+    }
+  ],
+  status: "generated",
+  email: prueba@prueba.com,
+  address: Calle falsa 123,
+```
+### List Orders
+Listar ordenes de compra
+- Method: GET
+- endpoint: api/orders
 
 ### Server Config
 Muestra la configuracion del servidor
