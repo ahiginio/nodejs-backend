@@ -1,6 +1,7 @@
 /* -------------------------------------------------------------------------- */
 /*                       CoderHouse Pre-entrega 3 Final                       */
 /* -------------------------------------------------------------------------- */
+import emoji from 'node-emoji'
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
@@ -9,9 +10,11 @@ import cors from 'cors'
 import path from 'path'
 import cluster from 'cluster'
 import os from 'os'
-import logger from "./utils/logger.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { createServer } from "http";
+import { Server } from "socket.io";
+import WebSocket, { WebSocketServer } from "ws";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 dotenv.config()
@@ -20,17 +23,20 @@ import CartRouter from "./routes/cart.route.js";
 import ProductRouter from "./routes/product.route.js";
 import CategoryRouter from "./routes/category.route.js";
 import CheckoutRouter from "./routes/checkout.route.js";
+import MensajesRouter from "./routes/mensajes.route.js";
 import "./utils/db.js"
+import logger from "./utils/logger.js";
 import auth from "./middlewares/auth.middleware.js";
-
+import * as mensajesController from "./controllers/mensajes.controller.js";
+import Mensaje from './models/mensajes.model.js'
 const nCpus = os.cpus().length
 if (cluster.isMaster) {
-  console.log(`Master PID ${process.pid} is running`)
+  console.log(`${emoji.get(":zap:")}Master PID ${process.pid} is running`);
   for (let i = 0; i < nCpus; i++) {
     cluster.fork()    
   }
   cluster.on('exit', (worker, code, signal) => {
-    console.log(`Worker PID ${worker.process.pid} died`)
+    console.log(`${emoji.get(":zap:")} Worker PID ${worker.process.pid} died`);
     cluster.fork()    
   })
 } else {
@@ -70,13 +76,49 @@ if (cluster.isMaster) {
   app.use("/api/", CategoryRouter);
   app.use("/api/", CartRouter);
   app.use("/api/", CheckoutRouter);
-  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use("/api/", MensajesRouter);
+/*   app.use(express.static(path.join(__dirname, "client", "build")));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  }); */
+  app.get("/", (req, res) => {
+    res.send({ response: "I am alive" }).status(200);
   });
   // Inicio el servidor
   const PORT = process.env.PORT || 8080;
+  const httpServer = createServer(app);
+   const io = new Server(httpServer, {
+    cors: {
+      origin: "*",
+     
+
+     
+    },
+
+  });
+ 
+  io.on("connection", async (socket) => {
+    const mensajes = await Mensaje.find({}).then((mensajes) => { return mensajes})
+    console.log(`${emoji.get(":zap:")} Websocket conectado`);
+    socket.emit("mensajes", mensajes);
+    socket.on("update", async (mensaje) => {
+      const message = new Mensaje(mensaje);
+      message.save().then((response) => { return response});
+      socket.emit("mensajes", mensajes);
+    });
+     socket.on("disconnect", () => {
+      console.log("Client disconnected");
+     });
+  }); 
+ /* io.on("connection", (socket) => {
+   console.log(`connect ${socket.id}`);
+
+   socket.on("disconnect", (reason) => {
+     console.log(`disconnect ${socket.id} due to ${reason}`);
+   });
+ }); */
   app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-  })
+    console.log(`${emoji.get("computer")}Server is running on port ${PORT}.`);
+  });
+  httpServer.listen(3001)
 }
