@@ -81,13 +81,13 @@ if (cluster.isMaster) {
   app.use("/api/", OrderRouter);
   app.use("/api/", MensajesRouter);
   app.use("/api/", ConfigurationRouter);
-/*   app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(express.static(path.join(__dirname, "client", "build")));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  }); */
-  app.get("/", (req, res) => {
-    res.send({ response: "I am alive" }).status(200);
   });
+ /*  app.get("/", (req, res) => {
+    res.send({ response: "I am alive" }).status(200);
+  }); */
   // Inicio el servidor
   const PORT = process.env.PORT || 8080;
   const httpServer = createServer(app);
