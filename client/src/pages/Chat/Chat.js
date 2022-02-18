@@ -8,13 +8,13 @@ import { AuthContext } from "../../context/AuthContext";
 import socketIOClient from "socket.io-client";
 
 export default function Account (){
-  const ENDPOINT = "http://localhost:3001";   
+  
   const {authState} = useContext(AuthContext)
   const [email, setEmail] = useState("")
   const [mensaje, setMensaje] = useState("")
   const [mensajesSocket, setMensajesSocket] = useState([])
   const [response, setResponse] = useState([]);
-  const socket = socketIOClient(ENDPOINT);
+  const socket = socketIOClient(process.env.WEBSOCKET_ENDPOINT);
   const { emailParam } = useParams()
    useEffect(() => {
     socket.on("mensajes", (data) => {
