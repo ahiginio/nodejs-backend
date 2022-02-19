@@ -14,7 +14,9 @@ export default function Account (){
   const [mensaje, setMensaje] = useState("")
   const [mensajesSocket, setMensajesSocket] = useState([])
   const [response, setResponse] = useState([]);
-  const socket = socketIOClient(process.env.WEBSOCKET_ENDPOINT);
+  const socket = socketIOClient(
+    "https://coderback-house.herokuapp.com:3001"
+  );
   const { emailParam } = useParams()
    useEffect(() => {
     socket.on("mensajes", (data) => {
