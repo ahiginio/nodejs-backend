@@ -18,7 +18,7 @@ export default function Login () {
       password: password,
     };
      axios
-       .post(`${process.env.API_URL}/user/login`, usuario)
+       .post(`http://localhost:8080/api/user/login`, usuario)
        .then((res) => {
          if (res.status === 200) {
           const token = res.data.token;
@@ -27,7 +27,7 @@ export default function Login () {
           localStorage.setItem("user", JSON.stringify(user));
           setAuthState(res.data);
           console.log(token)
-          axios.post(`${process.env.API_URL}/cart/${res.data.user.id}`,{}, {
+          axios.post(`http://localhost:8080/api/cart/${res.data.user.id}`,{}, {
             headers: {
               "Authorization": `Bearer ${res.data.token}`
             }
