@@ -1,14 +1,13 @@
 import {useState, useEffect, useContext} from 'react';
 import { useNavigate } from "react-router-dom";
-
+import { CartContext } from '../../context/CartContext';
 import { AuthContext } from "../../context/AuthContext";
 import axios from 'axios'
-import { CartContext } from '../../context/CartContext';
 export default function Login () {
   let navigate = useNavigate();
+  const {setCart } = useContext(CartContext)
   const authContext = useContext(AuthContext);
   const { setAuthState, isAuthenticated, authState } = authContext;
-  const {setCart } = useContext(CartContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleLogin = (e) => {

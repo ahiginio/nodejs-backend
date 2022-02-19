@@ -1,7 +1,11 @@
 import {useState, useContext} from 'react'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 import {AuthContext} from '../../context/AuthContext'
 export default function Register() {
+  let navigate = useNavigate();
+  const { setCart } = useContext(CartContext);
   const {setAuthState} = useContext(AuthContext)
   const [userName, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -35,6 +39,24 @@ export default function Register() {
               localStorage.setItem("user", JSON.stringify(user));
               setAuthState(res.data);
               alert("USUARIO LOGEADO, TOKEN GUARDADO");
+               axios
+                 .post(
+                   `https://coderback-house.herokuapp.com/api/cart/${res.data.user.id}`,
+                   {},
+                   {
+                     headers: {
+                       Authorization: `Bearer ${res.data.token}`,
+                     },
+                   }
+                 )
+                 .then((response) => {
+                   setCart(response.data.id);
+                   localStorage.setItem("cartId", response.data.id);
+                   navigate("/products");
+                 })
+                 .catch((err) => {
+                   console.error(err);
+                 });
             }
           })
           .catch((error) => {
