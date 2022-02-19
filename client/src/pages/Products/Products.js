@@ -10,7 +10,7 @@ export default function Products() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     axios
-      .get(`https://coderback-house.herokuapp.com:8080/api/products`,{
+      .get(`https://coderback-house.herokuapp.com/api/products`,{
         headers: {
           "Authorization": `Bearer ${authState.token}`
         }

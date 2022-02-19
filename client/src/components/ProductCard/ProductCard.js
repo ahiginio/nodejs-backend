@@ -10,7 +10,7 @@ export default function ProductCard({product}) {
   console.log(authState)
   const addToCart = (product) => {
     axios
-      .put(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos`, {
+      .put(`https://coderback-house.herokuapp.com/api/cart/${cart}/productos`, {
         product_id: product._id,
         qty: 1,
       }, {

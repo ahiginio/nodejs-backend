@@ -12,7 +12,7 @@ export default function Cart () {
   const [cartProducts, setCartProducts] = useState([])
   const getCartProducts = () => {
     axios
-      .get(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos`, {
+      .get(`https://coderback-house.herokuapp.com/api/cart/${cart}/productos`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
@@ -27,7 +27,7 @@ export default function Cart () {
   }
    const deleteFromCart = (item) => {
      axios
-       .delete(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos/${item._id}`, {
+       .delete(`https://coderback-house.herokuapp.com/api/cart/${cart}/productos/${item._id}`, {
          headers: {
            Authorization: `Bearer ${authState.token}`,
          },

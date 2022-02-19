@@ -6,7 +6,7 @@ export default function Configuration () {
   const {authState} = useContext(AuthContext)
   const [configuraciones, setConfiguraciones ] = useState()
   useEffect(() => {
-    axios.get(`https://coderback-house.herokuapp.com:8080/api/configuration`,{
+    axios.get(`https://coderback-house.herokuapp.com/api/configuration`,{
     
           headers: {
             Authorization: `Bearer ${authState.token}`,

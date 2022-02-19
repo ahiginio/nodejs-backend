@@ -11,7 +11,7 @@ export default function Category() {
   const [products, setProducts] = useState([])
   useEffect(() => {
     axios
-      .get(`https://coderback-house.herokuapp.com:8080/api/products/category/${catId}`, {
+      .get(`https://coderback-house.herokuapp.com/api/products/category/${catId}`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },

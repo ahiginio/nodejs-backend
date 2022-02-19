@@ -23,10 +23,10 @@ export default function Register() {
     role: 'admin'
   }
   const handleRegister = () => {
-    axios.post(`https://coderback-house.herokuapp.com:8080/api/user/register`, data).then((res) => {
+    axios.post(`https://coderback-house.herokuapp.com/api/user/register`, data).then((res) => {
       if (res.status === 200) {
         axios
-          .post(`https://coderback-house.herokuapp.com:8080/api/user/login`, { email: email, password: password})
+          .post(`https://coderback-house.herokuapp.com/api/user/login`, { email: email, password: password})
           .then((res) => {
             if (res.status === 200) {
               const token = res.data.token;

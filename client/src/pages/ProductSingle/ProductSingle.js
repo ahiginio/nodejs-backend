@@ -13,7 +13,7 @@ export default function Products() {
   const [product, setProduct] = useState([])
   useEffect(() => {
     axios
-      .get(`https://coderback-house.herokuapp.com:8080/api/product/${productId}`,{
+      .get(`https://coderback-house.herokuapp.com/api/product/${productId}`,{
         headers: {
           "Authorization": `Bearer ${authState.token}`
         }
@@ -30,7 +30,7 @@ export default function Products() {
  const addToCart = (product) => {
    axios
      .put(
-       `https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos`,
+       `https://coderback-house.herokuapp.com/api/cart/${cart}/productos`,
        {
          product_id: product._id,
          qty: 1,

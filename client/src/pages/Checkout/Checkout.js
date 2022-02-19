@@ -12,7 +12,7 @@ export default function Checkout () {
    const [orderCompleted, setOrderCompleted] = useState(false)
    const getCartProducts = () => {
      axios
-       .get(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos`, {
+       .get(`https://coderback-house.herokuapp.com/api/cart/${cart}/productos`, {
          headers: {
            Authorization: `Bearer ${authState.token}`,
          },
@@ -28,7 +28,7 @@ export default function Checkout () {
    console.log(cartProducts);
    const deleteFromCart = (item) => {
      axios
-       .delete(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/productos/${item._id}`, {
+       .delete(`https://coderback-house.herokuapp.com/api/cart/${cart}/productos/${item._id}`, {
          headers: {
            Authorization: `Bearer ${authState.token}`,
          },
@@ -56,7 +56,7 @@ export default function Checkout () {
   const handleAddOrder = () => {
     axios
       .post(
-        `https://coderback-house.herokuapp.com:8080/api/order`,
+        `https://coderback-house.herokuapp.com/api/order`,
         {
           items: productsEnviar,
           status: "generated",
@@ -72,7 +72,7 @@ export default function Checkout () {
       .then((res) => {
         setOrderCompleted(true)
         axios
-          .delete(`https://coderback-house.herokuapp.com:8080/api/cart/${cart}/clear`, {
+          .delete(`https://coderback-house.herokuapp.com/api/cart/${cart}/clear`, {
             headers: {
               Authorization: `Bearer ${authState.token}`,
             },
