@@ -7,7 +7,7 @@ export default function Sidebar() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.API_URL}/categories`, {
+      .get(`https://coderback-house.herokuapp.com:8080/api/categories`, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
